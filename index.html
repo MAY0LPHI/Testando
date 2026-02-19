@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurpriseBoxJor - A experiência definitiva em lootbox digital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>SurpriseBoxJor</h1>
+                </div>
+                <div class="header-info">
+                    <div class="online-counter">
+                        <span class="online-badge">199 ON-LINE</span>
+                    </div>
+                    <div class="user-balance">
+                        <span class="balance">R$ <span id="userBalance">0,01</span></span>
+                    </div>
+                    <div class="user-name">
+                        <span id="userName">MARCELO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Promotional Banner -->
+            <section class="promo-banner">
+                <div class="promo-content">
+                    <div class="promo-text">
+                        <h2>GANHE R$ 4 AO SE CADASTRAR</h2>
+                        <p>ABRA ATÉ 6 CAIXAS SURPRESA</p>
+                    </div>
+                    <div class="promo-image">
+                        <img src="assets/images/promo-banner.png" alt="Prêmios" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="statistics">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="boxesOpened">12,097</div>
+                        <div class="stat-label">Caixas Abertas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="shipments">9,032</div>
+                        <div class="stat-label">Envios</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalUsers">37,142</div>
+                        <div class="stat-label">Usuários</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="onlineUsers">199</div>
+                        <div class="stat-label">On-line</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Boxes Section -->
+            <section class="featured-boxes">
+                <h2 class="section-title">Caixas em Destaque</h2>
+                <div class="boxes-grid">
+                    <!-- SKYDROP X -->
+                    <div class="box-card" data-box-id="1">
+                        <div class="box-badge">ALINHE 3 PARA GANHAR</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="assets/images/boxes/skydrop-x.png" alt="SKYDROP X" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%237c3aed%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22%3ESKYDROP X%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">SKYDROP X</h3>
+                        <div class="box-price">R$ 5,00</div>
+                        <button class="btn-open-box" onclick="location.href='pages/caixas.html?box=skydrop-x'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- FORTUNE X -->
+                    <div class="box-card" data-box-id="2">
+                        <div class="box-badge">ALINHE 3 PARA GANHAR</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="assets/images/boxes/fortune-x.png" alt="FORTUNE X" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%2300d9ff%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22%3EFORTUNE X%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">FORTUNE X</h3>
+                        <div class="box-price">R$ 27,90</div>
+                        <button class="btn-open-box" onclick="location.href='pages/caixas.html?box=fortune-x'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- PRIME FORTUNE -->
+                    <div class="box-card featured" data-box-id="3">
+                        <div class="box-badge best-choice">MELHOR ESCOLHA</div>
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="assets/images/boxes/prime-fortune.png" alt="PRIME FORTUNE" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fbbf24%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EPRIME%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EFORTUNE%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">PRIME FORTUNE</h3>
+                        <div class="box-price">R$ 49,99</div>
+                        <button class="btn-open-box" onclick="location.href='pages/caixas.html?box=prime-fortune'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- ULTRA FORTUNE -->
+                    <div class="box-card" data-box-id="4">
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-badge premium">CHANCE DOBRADA DE PRÊMIOS ALTOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="assets/images/boxes/ultra-fortune.png" alt="ULTRA FORTUNE" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%237c3aed%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EULTRA%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EFORTUNE%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">ULTRA FORTUNE</h3>
+                        <div class="box-price">R$ 97,00</div>
+                        <button class="btn-open-box" onclick="location.href='pages/caixas.html?box=ultra-fortune'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- SKYDROP DELUXE -->
+                    <div class="box-card" data-box-id="5">
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="assets/images/boxes/skydrop-deluxe.png" alt="SKYDROP DELUXE" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%2300d9ff%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3ESKYDROP%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EDELUXE%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">SKYDROP DELUXE</h3>
+                        <div class="box-price">R$ 197,00</div>
+                        <button class="btn-open-box" onclick="location.href='pages/caixas.html?box=skydrop-deluxe'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- DIAMOND EDITION -->
+                    <div class="box-card premium" data-box-id="6">
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="assets/images/boxes/diamond-edition.png" alt="DIAMOND EDITION" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fbbf24%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EDIAMOND%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EEDITION%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">DIAMOND EDITION</h3>
+                        <div class="box-price">R$ 497,00</div>
+                        <button class="btn-open-box" onclick="location.href='pages/caixas.html?box=diamond-edition'">ABRIR CAIXA</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Album Section Preview -->
+            <section class="album-preview">
+                <h2 class="section-title">COMPLETE E GANHE RECOMPENSAS</h2>
+                <div class="album-grid">
+                    <div class="album-card">
+                        <div class="album-image">
+                            <img src="assets/images/prizes/kit-master-audio.png" alt="Kit Master Audio" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%237c3aed%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2216%22%3EKit Audio%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3>Álbum Audio Master 1</h3>
+                        <div class="album-progress">0/10</div>
+                        <p class="album-reward">Recompensa: KIT MASTER AUDIO</p>
+                        <button class="btn-album" onclick="location.href='pages/album.html'">Abrir álbum</button>
+                    </div>
+
+                    <div class="album-card">
+                        <div class="album-image">
+                            <img src="assets/images/prizes/ps5-controller.png" alt="PS5 Controller" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%2300d9ff%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2216%22%3EPS5 Control%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3>CINEMA CONTROLLER PS5 EDITION</h3>
+                        <div class="album-progress">0/176</div>
+                        <p class="album-reward">Recompensa: Controle Dualsense ps5 Original</p>
+                        <button class="btn-album" onclick="location.href='pages/album.html'">Abrir álbum</button>
+                    </div>
+
+                    <div class="album-card featured">
+                        <div class="album-image">
+                            <img src="assets/images/prizes/ps5-pro.png" alt="PS5 Pro" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fbbf24%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22%3EPS5 PRO%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3>PS5 PRO</h3>
+                        <div class="album-progress">0/1872</div>
+                        <p class="album-reward">Recompensa: PS5 PRO</p>
+                        <button class="btn-album" onclick="location.href='pages/album.html'">Abrir álbum</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SurpriseBoxJor</h3>
+                    <p>A experiência definitiva em lootbox digital</p>
+                    <ul>
+                        <li><a href="#">Códigos promocionais</a></li>
+                        <li><a href="#">Acordo de Usuário</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Suporte</h3>
+                    <p>Email: <a href="mailto:suporte@surpriseboxjor.com">suporte@surpriseboxjor.com</a></p>
+                    <p>Parcerias: <a href="mailto:team@surpriseboxjor.com">team@surpriseboxjor.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Avaliação</h3>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <p>4.1 • 6.321 reviews</p>
+                        <p class="rating-label">Avaliação média dos jogadores</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">Facebook</a>
+                        <a href="#" class="social-icon">Instagram</a>
+                        <a href="#" class="social-icon">TikTok</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-benefits">
+                <div class="benefit">Bônus em todos depósitos</div>
+                <div class="benefit">Frete 100% grátis</div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 www.surpriseboxjor.com – Todos os direitos reservados.</p>
+                <p>Copyright © SurpriseBoxJor – Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="pages/suporte.html" class="nav-item">
+            <span class="nav-icon">📞</span>
+            <span class="nav-label">Suporte</span>
+        </a>
+        <a href="pages/album.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Álbum</span>
+        </a>
+        <a href="pages/caixas.html" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span class="nav-label">Caixas</span>
+        </a>
+        <a href="pages/lojinha.html" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span class="nav-label">Lojinha</span>
+        </a>
+        <a href="pages/perfil.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="pages/deposito.html" class="nav-item">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Depósito</span>
+        </a>
+    </nav>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
