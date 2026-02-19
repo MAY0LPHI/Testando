@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixas - SurpriseBoxJor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/caixas.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../index.html" style="text-decoration:none; color:inherit;">SurpriseBoxJor</a></h1>
+                </div>
+                <div class="header-info">
+                    <div class="online-counter">
+                        <span class="online-badge">199 ON-LINE</span>
+                    </div>
+                    <div class="user-balance">
+                        <span class="balance">R$ <span id="userBalance">0,01</span></span>
+                    </div>
+                    <div class="user-name">
+                        <span id="userName">MARCELO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Box Opening Container -->
+            <div class="box-opening-container" id="boxOpeningContainer">
+                <div class="box-header">
+                    <h1 id="boxName">Carregando...</h1>
+                    <div class="box-badge" id="boxBadge"></div>
+                    <div class="box-current-price">R$ <span id="boxPrice">0,00</span></div>
+                </div>
+
+                <!-- Prizes Grid (3x3) -->
+                <div class="prizes-grid" id="prizesGrid">
+                    <!-- Prizes will be dynamically loaded -->
+                </div>
+
+                <!-- Opening Actions -->
+                <div class="opening-actions">
+                    <button class="btn-open-main" id="btnOpenBox">
+                        ABRIR POR R$ <span id="openPrice">0,00</span>
+                    </button>
+                    <a href="#" class="link-see-prizes" id="linkSeePrizes">Ver prêmios possíveis</a>
+                </div>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h3>Como funciona?</h3>
+                    <ol>
+                        <li>Faça seu cadastro COMPLETO no app!</li>
+                        <li>Recarregue seu saldo com pelo menos R$ 20</li>
+                        <li>Abra a caixa usando seu saldo</li>
+                        <li>Ganhe prêmios incríveis!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- All Boxes Section -->
+            <section class="all-boxes-section">
+                <h2 class="section-title">Todas as Caixas</h2>
+                <div class="boxes-list">
+                    <!-- SKYDROP X -->
+                    <div class="box-card" data-box-id="1">
+                        <div class="box-badge">ALINHE 3 PARA GANHAR</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="../assets/images/boxes/skydrop-x.png" alt="SKYDROP X" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%237c3aed%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22%3ESKYDROP X%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">SKYDROP X</h3>
+                        <div class="box-price">R$ 5,00</div>
+                        <button class="btn-open-box" onclick="location.href='caixas.html?box=skydrop-x'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- FORTUNE X -->
+                    <div class="box-card" data-box-id="2">
+                        <div class="box-badge">ALINHE 3 PARA GANHAR</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="../assets/images/boxes/fortune-x.png" alt="FORTUNE X" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%2300d9ff%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22%3EFORTUNE X%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">FORTUNE X</h3>
+                        <div class="box-price">R$ 27,90</div>
+                        <button class="btn-open-box" onclick="location.href='caixas.html?box=fortune-x'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- PRIME FORTUNE -->
+                    <div class="box-card featured" data-box-id="3">
+                        <div class="box-badge best-choice">MELHOR ESCOLHA</div>
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="../assets/images/boxes/prime-fortune.png" alt="PRIME FORTUNE" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fbbf24%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EPRIME%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EFORTUNE%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">PRIME FORTUNE</h3>
+                        <div class="box-price">R$ 49,99</div>
+                        <button class="btn-open-box" onclick="location.href='caixas.html?box=prime-fortune'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- ULTRA FORTUNE -->
+                    <div class="box-card" data-box-id="4">
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-badge premium">CHANCE DOBRADA DE PRÊMIOS ALTOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="../assets/images/boxes/ultra-fortune.png" alt="ULTRA FORTUNE" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%237c3aed%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EULTRA%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EFORTUNE%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">ULTRA FORTUNE</h3>
+                        <div class="box-price">R$ 97,00</div>
+                        <button class="btn-open-box" onclick="location.href='caixas.html?box=ultra-fortune'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- SKYDROP DELUXE -->
+                    <div class="box-card" data-box-id="5">
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="../assets/images/boxes/skydrop-deluxe.png" alt="SKYDROP DELUXE" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%2300d9ff%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3ESKYDROP%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EDELUXE%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">SKYDROP DELUXE</h3>
+                        <div class="box-price">R$ 197,00</div>
+                        <button class="btn-open-box" onclick="location.href='caixas.html?box=skydrop-deluxe'">ABRIR CAIXA</button>
+                    </div>
+
+                    <!-- DIAMOND EDITION -->
+                    <div class="box-card premium" data-box-id="6">
+                        <div class="box-badge">SOMENTE PRÊMIOS FÍSICOS</div>
+                        <div class="box-image">
+                            <div class="box-glow"></div>
+                            <img src="../assets/images/boxes/diamond-edition.png" alt="DIAMOND EDITION" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fbbf24%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EDIAMOND%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2218%22%3EEDITION%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <h3 class="box-name">DIAMOND EDITION</h3>
+                        <div class="box-price">R$ 497,00</div>
+                        <button class="btn-open-box" onclick="location.href='caixas.html?box=diamond-edition'">ABRIR CAIXA</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="suporte.html" class="nav-item">
+            <span class="nav-icon">📞</span>
+            <span class="nav-label">Suporte</span>
+        </a>
+        <a href="album.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Álbum</span>
+        </a>
+        <a href="caixas.html" class="nav-item active">
+            <span class="nav-icon">📦</span>
+            <span class="nav-label">Caixas</span>
+        </a>
+        <a href="lojinha.html" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span class="nav-label">Lojinha</span>
+        </a>
+        <a href="perfil.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="deposito.html" class="nav-item">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Depósito</span>
+        </a>
+    </nav>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/lootbox.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depósito - SurpriseBoxJor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Mercado Pago SDK -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body class="deposit-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../index.html" style="text-decoration:none; color:inherit;">SurpriseBoxJor</a></h1>
+                </div>
+                <div class="header-info">
+                    <div class="online-counter">
+                        <span class="online-badge">199 ON-LINE</span>
+                    </div>
+                    <div class="user-balance">
+                        <span class="balance">R$ <span id="userBalance">0,01</span></span>
+                    </div>
+                    <div class="user-name">
+                        <span id="userName">MARCELO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container" style="max-width: 800px;">
+            <section class="deposit-section">
+                <h1 class="section-title">Adicionar Saldo</h1>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Escolha o valor e o método de pagamento. Valor mínimo: R$ 20,00
+                </p>
+
+                <!-- Amount Selection -->
+                <div class="amount-selection" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Selecione o valor:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                        <button class="amount-btn" data-amount="20">R$ 20,00</button>
+                        <button class="amount-btn" data-amount="50">R$ 50,00</button>
+                        <button class="amount-btn" data-amount="100">R$ 100,00</button>
+                        <button class="amount-btn" data-amount="200">R$ 200,00</button>
+                        <button class="amount-btn" data-amount="500">R$ 500,00</button>
+                        <button class="amount-btn" data-amount="1000">R$ 1.000,00</button>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem;">Ou digite um valor personalizado (mín. R$ 20):</label>
+                        <input type="number" id="customAmount" placeholder="0,00" min="20" step="0.01" 
+                               style="width: 100%; padding: 1rem; background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; font-size: 1.1rem;">
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="payment-methods">
+                    <h3 style="margin-bottom: 1rem;">Escolha o método de pagamento:</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <button class="payment-method-btn" id="btnPayPix">
+                            <span style="font-size: 2rem; margin-bottom: 0.5rem;">💳</span>
+                            <span style="font-weight: 700;">PIX</span>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary);">Pagamento instantâneo</span>
+                        </button>
+                        <button class="payment-method-btn" id="btnPayCard">
+                            <span style="font-size: 2rem; margin-bottom: 0.5rem;">💳</span>
+                            <span style="font-weight: 700;">Cartão de Crédito</span>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary);">Parcelamento disponível</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Benefits -->
+                <div style="background: var(--card-bg); border-radius: 12px; padding: 2rem; margin-top: 2rem; border-left: 4px solid var(--gold);">
+                    <h3 style="margin-bottom: 1rem; color: var(--gold);">✨ Benefícios</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem; color: var(--text-secondary);">
+                            ✓ Bônus em todos os depósitos
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: var(--text-secondary);">
+                            ✓ Crédito instantâneo após confirmação
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: var(--text-secondary);">
+                            ✓ Pagamento 100% seguro via Mercado Pago
+                        </li>
+                        <li style="margin-bottom: 0.75rem; color: var(--text-secondary);">
+                            ✓ Frete grátis em todas as recompensas
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="suporte.html" class="nav-item">
+            <span class="nav-icon">📞</span>
+            <span class="nav-label">Suporte</span>
+        </a>
+        <a href="album.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Álbum</span>
+        </a>
+        <a href="caixas.html" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span class="nav-label">Caixas</span>
+        </a>
+        <a href="lojinha.html" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span class="nav-label">Lojinha</span>
+        </a>
+        <a href="perfil.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="deposito.html" class="nav-item active">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Depósito</span>
+        </a>
+    </nav>
+
+    <style>
+        .amount-btn {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .amount-btn:hover {
+            border-color: var(--primary);
+            background: rgba(0, 217, 255, 0.1);
+        }
+        .amount-btn.selected {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(0, 217, 255, 0.2));
+        }
+        .payment-method-btn {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .payment-method-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+    </style>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/mercadopago.js"></script>
+</body>
+</html>
