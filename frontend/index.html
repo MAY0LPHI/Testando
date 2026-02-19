@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurpriseBoxJor - A experiência definitiva em lootbox digital</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login/Register Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Cadastrar</button>
+            </div>
+            
+            <div id="loginForm" class="auth-form active">
+                <h2>Entrar</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Senha" required>
+                <button onclick="login()">Entrar</button>
+            </div>
+            
+            <div id="registerForm" class="auth-form">
+                <h2>Cadastrar</h2>
+                <input type="text" id="registerUsername" placeholder="Nome de usuário" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Senha" required>
+                <button onclick="register()">Criar Conta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Saldo</h2>
+            <p class="deposit-info">Valor mínimo: R$ 20,00</p>
+            
+            <div class="deposit-form">
+                <label>Valor</label>
+                <input type="number" id="depositAmount" min="20" step="0.01" placeholder="R$ 20,00" required>
+                
+                <label>Método de Pagamento</label>
+                <div class="payment-methods">
+                    <button class="payment-method active" data-method="pix">
+                        <i class="fas fa-qrcode"></i> PIX
+                    </button>
+                    <button class="payment-method" data-method="card">
+                        <i class="fas fa-credit-card"></i> Cartão
+                    </button>
+                </div>
+                
+                <button onclick="createPayment()" class="btn-primary">Continuar</button>
+            </div>
+            
+            <div id="pixPayment" class="payment-section" style="display: none;">
+                <h3>Pagamento via PIX</h3>
+                <div id="qrCodeContainer"></div>
+                <p>Escaneie o QR Code ou copie o código abaixo:</p>
+                <div class="pix-code">
+                    <input type="text" id="pixCode" readonly>
+                    <button onclick="copyPixCode()">Copiar</button>
+                </div>
+                <p class="payment-status">Aguardando pagamento...</p>
+            </div>
+            
+            <div id="cardPayment" class="payment-section" style="display: none;">
+                <h3>Pagamento via Cartão</h3>
+                <p>Você será redirecionado para completar o pagamento...</p>
+                <div id="cardPaymentLink"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lootbox Opening Modal -->
+    <div id="lootboxModal" class="modal">
+        <div class="modal-content lootbox-content">
+            <span class="close">&times;</span>
+            <div id="lootboxDetails"></div>
+        </div>
+    </div>
+
+    <!-- Album Modal -->
+    <div id="albumModal" class="modal">
+        <div class="modal-content album-content">
+            <span class="close">&times;</span>
+            <div id="albumDetails"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>SurpriseBox<span>Jor</span></h1>
+                </div>
+                
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="balance">
+                        <i class="fas fa-wallet"></i>
+                        <span id="userBalance">R$ 0,00</span>
+                    </div>
+                    <div class="username">
+                        <i class="fas fa-user"></i>
+                        <span id="username">USUÁRIO</span>
+                    </div>
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-login" onclick="showAuthModal('login')">Entrar</button>
+                    <button class="btn-register" onclick="showAuthModal('register')">Cadastrar</button>
+                </div>
+            </div>
+            
+            <div class="online-users">
+                <span class="pulse-dot"></span>
+                <span id="onlineCount">199</span> usuários online
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h2>GANHE R$ 4 AO SE CADASTRAR</h2>
+                <p>ABRA ATÉ 6 CAIXAS SURPRESA</p>
+                <button class="btn-banner" onclick="scrollToBoxes()">ESCOLHA SUA CAIXA</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="statBoxes">12.097</div>
+                    <div class="stat-label">Caixas Abertas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="statShipments">9.032</div>
+                    <div class="stat-label">Envios</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="statUsers">37.142</div>
+                    <div class="stat-label">Usuários</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        <span class="pulse-dot"></span>
+                        <span id="statOnline">199</span>
+                    </div>
+                    <div class="stat-label">On-line</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lootboxes -->
+    <section class="lootboxes" id="lootboxes">
+        <div class="container">
+            <h2 class="section-title">ESCOLHA SUA CAIXA</h2>
+            <div class="lootbox-grid" id="lootboxGrid">
+                <!-- Lootboxes will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Albums -->
+    <section class="albums">
+        <div class="container">
+            <h2 class="section-title">COMPLETE E GANHE RECOMPENSAS</h2>
+            <p class="section-subtitle">Anexe suas Figurinhas JOR, avance no progresso e resgate prêmios especiais.</p>
+            <div class="album-grid" id="albumGrid">
+                <!-- Albums will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>SurpriseBoxJor</h3>
+                    <p>A experiência definitiva em lootbox digital</p>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-tag"></i> Códigos promocionais</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Acordo de Usuário</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> suporte@surpriseboxjor.com</li>
+                        <li><i class="fas fa-briefcase"></i> team@surpriseboxjor.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Avaliação</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>Avaliação média dos jogadores</p>
+                    <p class="rating-detail">4.1 • 6.321 reviews</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 www.surpriseboxjorbr.com – Todos os direitos reservados.</p>
+                <p class="bonus-text">Bônus em todos depósitos</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item" onclick="showSection('support')">
+            <i class="fas fa-headset"></i>
+            <span>Suporte</span>
+        </button>
+        <button class="nav-item" onclick="showSection('album')">
+            <i class="fas fa-book"></i>
+            <span>Álbum</span>
+        </button>
+        <button class="nav-item active" onclick="showSection('boxes')">
+            <i class="fas fa-box"></i>
+            <span>Caixas</span>
+        </button>
+        <button class="nav-item" onclick="showSection('shop')">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Lojinha</span>
+        </button>
+        <button class="nav-item" onclick="showSection('profile')">
+            <i class="fas fa-user"></i>
+            <span>Perfil</span>
+        </button>
+        <button class="nav-item" onclick="showDepositModal()">
+            <i class="fas fa-wallet"></i>
+            <span>Depósito</span>
+        </button>
+    </nav>
+
+    <script src="js/main.js"></script>
+    <script src="js/lootbox.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/album.js"></script>
+    <script src="js/wallet.js"></script>
+</body>
+</html>
