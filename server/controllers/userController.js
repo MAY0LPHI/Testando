@@ -8,7 +8,7 @@ class UserController {
     // Get user balance
     async getBalance(req, res) {
         try {
-            const userId = req.headers['user-id'] || req.query.userId;
+            const userId = req.headers['user-id'] || req.query.userId || 'demo_user';
 
             if (!userId) {
                 return res.status(400).json({
