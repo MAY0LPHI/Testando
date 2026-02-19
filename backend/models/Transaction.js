@@ -14,6 +14,15 @@ class Transaction {
     });
   }
 
+  static findById(transactionId) {
+    return new Promise((resolve, reject) => {
+      db.get('SELECT * FROM transactions WHERE id = ?', [transactionId], (err, row) => {
+        if (err) reject(err);
+        else resolve(row);
+      });
+    });
+  }
+
   static updateStatus(transactionId, status) {
     return new Promise((resolve, reject) => {
       db.run(

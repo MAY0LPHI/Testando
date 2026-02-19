@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { mercadopago } = require('../config/mercadopago');
+const { getPreference, getPayment } = require('../config/mercadopago');
 const authMiddleware = require('../middleware/auth');
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
@@ -24,7 +24,22 @@ router.post('/create-preference', authMiddleware, async (req, res) => {
     // Create transaction record
     const transactionId = await Transaction.create(userId, 'deposit', amount, paymentMethod);
 
-    const preference = {
+    const preferenceClient = getPreference();
+    
+    // In demo mode, return mock data
+    if (!preferenceClient) {
+      return res.json({
+        id: `demo_pref_${transactionId}`,
+        init_point: '#',
+        sandbox_init_point: '#',
+        qr_code: `demo_qr_code_${transactionId}`,
+        qr_code_base64: null,
+        ticket_url: null,
+        transaction_id: transactionId
+      });
+    }
+
+    const preferenceData = {
       items: [
         {
           title: 'Recarga de Saldo - SurpriseBoxJor',
@@ -49,7 +64,7 @@ router.post('/create-preference', authMiddleware, async (req, res) => {
 
     // For PIX, add payment methods configuration
     if (paymentMethod === 'pix') {
-      preference.payment_methods = {
+      preferenceData.payment_methods = {
         excluded_payment_types: [
           { id: 'credit_card' },
           { id: 'debit_card' },
@@ -58,15 +73,15 @@ router.post('/create-preference', authMiddleware, async (req, res) => {
       };
     }
 
-    const response = await mercadopago.preferences.create(preference);
+    const response = await preferenceClient.create({ body: preferenceData });
 
     res.json({
-      id: response.body.id,
-      init_point: response.body.init_point,
-      sandbox_init_point: response.body.sandbox_init_point,
-      qr_code: response.body.point_of_interaction?.transaction_data?.qr_code,
-      qr_code_base64: response.body.point_of_interaction?.transaction_data?.qr_code_base64,
-      ticket_url: response.body.point_of_interaction?.transaction_data?.ticket_url,
+      id: response.id,
+      init_point: response.init_point,
+      sandbox_init_point: response.sandbox_init_point,
+      qr_code: response.point_of_interaction?.transaction_data?.qr_code,
+      qr_code_base64: response.point_of_interaction?.transaction_data?.qr_code_base64,
+      ticket_url: response.point_of_interaction?.transaction_data?.ticket_url,
       transaction_id: transactionId
     });
   } catch (error) {
@@ -83,11 +98,16 @@ router.post('/webhook', async (req, res) => {
     if (type === 'payment') {
       const paymentId = data.id;
       
-      // Get payment details from Mercado Pago
-      const payment = await mercadopago.payment.findById(paymentId);
+      const paymentClient = getPayment();
+      if (!paymentClient) {
+        return res.status(200).send('OK');
+      }
       
-      if (payment.body.status === 'approved') {
-        const externalReference = payment.body.external_reference;
+      // Get payment details from Mercado Pago
+      const paymentData = await paymentClient.get({ id: paymentId });
+      
+      if (paymentData.status === 'approved') {
+        const externalReference = paymentData.external_reference;
         const transaction = await Transaction.findById(parseInt(externalReference));
         
         if (transaction && transaction.status === 'pending') {
@@ -114,11 +134,19 @@ router.get('/status/:paymentId', authMiddleware, async (req, res) => {
   try {
     const { paymentId } = req.params;
     
-    const payment = await mercadopago.payment.findById(paymentId);
+    const paymentClient = getPayment();
+    if (!paymentClient) {
+      return res.json({
+        status: 'pending',
+        status_detail: 'demo_mode'
+      });
+    }
+    
+    const paymentData = await paymentClient.get({ id: paymentId });
     
     res.json({
-      status: payment.body.status,
-      status_detail: payment.body.status_detail
+      status: paymentData.status,
+      status_detail: paymentData.status_detail
     });
   } catch (error) {
     console.error('Payment status error:', error);
