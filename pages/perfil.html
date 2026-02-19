@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - SurpriseBoxJor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../index.html" style="text-decoration:none; color:inherit;">SurpriseBoxJor</a></h1>
+                </div>
+                <div class="header-info">
+                    <div class="online-counter">
+                        <span class="online-badge">199 ON-LINE</span>
+                    </div>
+                    <div class="user-balance">
+                        <span class="balance">R$ <span id="userBalance">0,01</span></span>
+                    </div>
+                    <div class="user-name">
+                        <span id="userName">MARCELO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container" style="max-width: 900px;">
+            <section class="profile-section">
+                <h1 class="section-title">Meu Perfil</h1>
+
+                <!-- User Info Card -->
+                <div style="background: var(--card-bg); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                            👤
+                        </div>
+                        <div>
+                            <h2 id="profileName" style="font-size: 1.75rem; margin-bottom: 0.5rem;">MARCELO</h2>
+                            <p style="color: var(--text-secondary);">ID: <span id="profileId">user_xxxxx</span></p>
+                            <p style="color: var(--gold); font-weight: 700; margin-top: 0.5rem;">Saldo: R$ <span id="profileBalance">0,01</span></p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px;">
+                            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Caixas Abertas</p>
+                            <p style="font-size: 2rem; font-weight: 800; color: var(--primary);" id="profileBoxesOpened">0</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px;">
+                            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Prêmios Ganhos</p>
+                            <p style="font-size: 2rem; font-weight: 800; color: var(--gold);" id="profilePrizesWon">0</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px;">
+                            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Álbuns Completos</p>
+                            <p style="font-size: 2rem; font-weight: 800; color: var(--secondary);" id="profileAlbumsCompleted">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div style="background: var(--card-bg); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h2 style="margin-bottom: 1.5rem;">Histórico Recente</h2>
+                    <div id="activityHistory">
+                        <p style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                            Nenhuma atividade ainda. Abra sua primeira caixa!
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="suporte.html" class="nav-item">
+            <span class="nav-icon">📞</span>
+            <span class="nav-label">Suporte</span>
+        </a>
+        <a href="album.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Álbum</span>
+        </a>
+        <a href="caixas.html" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span class="nav-label">Caixas</span>
+        </a>
+        <a href="lojinha.html" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span class="nav-label">Lojinha</span>
+        </a>
+        <a href="perfil.html" class="nav-item active">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="deposito.html" class="nav-item">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Depósito</span>
+        </a>
+    </nav>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Load profile data
+        document.addEventListener('DOMContentLoaded', () => {
+            const userId = window.userState.userId;
+            const balance = window.userState.getBalance();
+            const username = window.userState.username;
+
+            document.getElementById('profileName').textContent = username;
+            document.getElementById('profileId').textContent = userId;
+            document.getElementById('profileBalance').textContent = balance.toFixed(2).replace('.', ',');
+
+            // Load history
+            const history = JSON.parse(localStorage.getItem('openingHistory') || '[]');
+            document.getElementById('profileBoxesOpened').textContent = history.length;
+            document.getElementById('profilePrizesWon').textContent = history.length;
+
+            // Check completed albums
+            const albums = JSON.parse(localStorage.getItem('userAlbums') || '{}');
+            const completedCount = Object.values(albums).filter(a => a.completed).length;
+            document.getElementById('profileAlbumsCompleted').textContent = completedCount;
+
+            // Display history
+            if (history.length > 0) {
+                const historyContainer = document.getElementById('activityHistory');
+                historyContainer.innerHTML = '';
+                
+                history.slice(0, 10).forEach(item => {
+                    const date = new Date(item.timestamp);
+                    const div = document.createElement('div');
+                    div.style.cssText = 'padding: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center;';
+                    div.innerHTML = `
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 0.25rem;">${item.boxName}</p>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Prêmio: ${item.prize}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="color: var(--gold);">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">${date.toLocaleDateString('pt-BR')}</p>
+                        </div>
+                    `;
+                    historyContainer.appendChild(div);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

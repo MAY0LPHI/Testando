@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum - SurpriseBoxJor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../index.html" style="text-decoration:none; color:inherit;">SurpriseBoxJor</a></h1>
+                </div>
+                <div class="header-info">
+                    <div class="online-counter">
+                        <span class="online-badge">199 ON-LINE</span>
+                    </div>
+                    <div class="user-balance">
+                        <span class="balance">R$ <span id="userBalance">0,01</span></span>
+                    </div>
+                    <div class="user-name">
+                        <span id="userName">MARCELO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="album-section">
+                <h1 class="section-title">COMPLETE E GANHE RECOMPENSAS</h1>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Colecione figurinhas abrindo caixas e complete os álbuns para ganhar prêmios incríveis!
+                </p>
+                
+                <div class="album-grid" id="albumsList">
+                    <!-- Albums will be dynamically loaded -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="suporte.html" class="nav-item">
+            <span class="nav-icon">📞</span>
+            <span class="nav-label">Suporte</span>
+        </a>
+        <a href="album.html" class="nav-item active">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Álbum</span>
+        </a>
+        <a href="caixas.html" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span class="nav-label">Caixas</span>
+        </a>
+        <a href="lojinha.html" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span class="nav-label">Lojinha</span>
+        </a>
+        <a href="perfil.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="deposito.html" class="nav-item">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Depósito</span>
+        </a>
+    </nav>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/album.js"></script>
+</body>
+</html>
