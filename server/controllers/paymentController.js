@@ -147,13 +147,23 @@ class PaymentController {
             // Parse expiration date
             const [expMonth, expYear] = cardData.expirationDate.split('/');
 
-            // Create payment
+            // IMPORTANT: In production, the frontend MUST create a card token using Mercado Pago SDK
+            // before calling this endpoint. Never send raw card data to your server.
+            // This is a demo implementation showing the server-side flow.
+            
+            // For production, expect cardData to contain only the token:
+            // const cardToken = cardData.token; // Token created by MP SDK on frontend
+            
+            // Demo implementation - DO NOT USE IN PRODUCTION
+            console.warn('⚠️  Card payment is in demo mode. Implement frontend tokenization before production!');
+            
+            // Create payment with placeholder (would use real token in production)
             const payment = {
                 transaction_amount: parseFloat(amount),
-                token: 'card_token', // In production, create token on frontend
+                token: cardData.token || 'DEMO_TOKEN_REPLACE_WITH_REAL', // Token from MP SDK
                 description: description || `Recarga de saldo - R$ ${amount}`,
                 installments: parseInt(cardData.installments) || 1,
-                payment_method_id: 'visa', // Would be determined from card number
+                payment_method_id: cardData.payment_method_id || 'visa',
                 payer: {
                     email: `${userId}@surpriseboxjor.com`,
                     identification: {
@@ -169,7 +179,7 @@ class PaymentController {
             };
 
             // Note: In production, use Mercado Pago SDK on frontend to create card token
-            // This is a simplified version for demonstration
+            // See: https://www.mercadopago.com.br/developers/en/docs/checkout-api/integration-configuration/card-configuration
             
             const response = await mercadopago.payment.create(payment);
             const paymentData = response.body;

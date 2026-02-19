@@ -197,11 +197,31 @@ class MercadoPagoIntegration {
     }
 
     copyPIXCode(code) {
+        // Modern Clipboard API
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(code)
+                .then(() => {
+                    window.NotificationSystem.show('Código PIX copiado!', 'success');
+                })
+                .catch(() => {
+                    // Fallback to older method
+                    this.copyPIXCodeFallback();
+                });
+        } else {
+            this.copyPIXCodeFallback();
+        }
+    }
+
+    copyPIXCodeFallback() {
         const textarea = document.querySelector('.pix-code-text');
         if (textarea) {
             textarea.select();
-            document.execCommand('copy');
-            window.NotificationSystem.show('Código PIX copiado!', 'success');
+            try {
+                document.execCommand('copy');
+                window.NotificationSystem.show('Código PIX copiado!', 'success');
+            } catch (err) {
+                window.NotificationSystem.show('Erro ao copiar código', 'error');
+            }
         }
     }
 

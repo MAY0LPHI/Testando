@@ -15,7 +15,7 @@ class UserState {
     }
 
     generateUserId() {
-        const id = 'user_' + Math.random().toString(36).substr(2, 9);
+        const id = 'user_' + Math.random().toString(36).substring(2, 11);
         localStorage.setItem('userId', id);
         return id;
     }
